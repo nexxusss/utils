@@ -4,43 +4,47 @@
 #input 1: test
 #input 2: test.txt
 #output --> the resemblance percentage: 50%
-phrase = input("Enter sentence or word: ").strip().lower()
-target = input("Target: ").strip().lower()
 
-target2 = []
-phrase2 = []
-for a in target:
-    target2.append(a)
+def take_input():
+    global input_word
+    global target_list
+    global input_list
+    
+    input_word = input("Enter sentence or word: ").strip().lower()
+    target = input("Target: ").strip().lower()
 
-for e in phrase:
-    phrase2.append(e)
 
-count = 0
+    target_list = []
+    input_list = []
+    for a in target:
+        target_list.append(a)
 
-if len(phrase2) <= len(target2):
-    for i in range(len(phrase2)):
-        #print(phrase2[i], target2[i])
-        if phrase2[i] == target2[i]:
-            count += 1
+    for e in input_word:
+        input_list.append(e)
 
-    percentage = (count/len(target2))*100
-elif len(target2) <= len(phrase2):
-    for i in range(len(target2)):
-        #print(phrase2[i], target2[i])
-        if phrase2[i] == target2[i]:
-            count += 1
+    return (input_list, target_list, input_word)
 
-    percentage = percentage = (count/len(phrase2))*100
+def res_perc(phrase, trgt):
+    count = 0
 
-"""
-def percentage(num, lenght):
-     return (num/lenght)*100
-"""
-print(f"{percentage}%")
+    if len(phrase) <= len(trgt):
+        for i in range(len(phrase)):
+            if phrase[i] == trgt[i]:
+                count += 1
 
-"""
-print(target2)
-print(phrase2)
-print(count)
-print(percentage(count, len(target2)))
-"""#was debugging the hard way
+        percentage = (count/len(trgt))*100
+    elif len(trgt) <= len(phrase):
+        for i in range(len(trgt)):
+            #print(phrase2[i], target2[i])
+            if phrase[i] == trgt[i]:
+                count += 1
+
+        percentage =(count/len(phrase))*100
+
+    return percentage
+
+
+if __name__ == '__main__':
+    take_input()
+    print(res_perc(input_list, target_list))
+

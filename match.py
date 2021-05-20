@@ -24,6 +24,7 @@ def take_input():
 
     return (input_list, target_list, input_word)
 
+
 def res_perc(phrase, trgt):
     count = 0
 

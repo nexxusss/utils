@@ -14,13 +14,9 @@ def take_input():
     target = input("Target: ").strip().lower()
 
 
-    target_list = []
-    input_list = []
-    for a in target:
-        target_list.append(a)
+    target_list = list(target)
+    input_list = list(input_word)
 
-    for e in input_word:
-        input_list.append(e)
 
     return (input_list, target_list, input_word)
 
